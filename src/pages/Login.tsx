@@ -27,8 +27,8 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-primary via-primary-light to-secondary flex flex-col p-6">
       <div className="flex-1 flex flex-col justify-center max-w-md mx-auto w-full">
         <div className="text-center mb-8 animate-slide-up">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-2xl shadow-xl mb-4">
-            <Building2 className="w-12 h-12 text-primary" />
+          <div className="inline-flex items-center justify-center w-[100px] h-[100px] bg-white rounded-2xl shadow-xl mb-4">
+            <img src="/Images/logo.png" className="w-20 h-20 " />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
           <p className="text-white/80">Sign in to continue to ICAI Mobile</p>
@@ -90,41 +90,10 @@ const Login = () => {
               <Button type="submit" className="w-full h-12 bg-primary hover:bg-primary-light">
                 Login
               </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full h-12"
-                onClick={() => navigate("/otp-login")}
-              >
-                Login with OTP
-              </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full h-12 flex items-center justify-center gap-2"
-                onClick={handleBiometric}
-              >
-                <Fingerprint className="h-5 w-5" />
-                Login with Biometric
-              </Button>
+              
             </div>
           </form>
         </Card>
-
-        <div className="text-center mt-6 animate-fade-in">
-          <p className="text-white/90">
-            New User?{" "}
-            <Button
-              variant="link"
-              className="text-white font-semibold p-0 h-auto"
-              onClick={() => navigate("/register")}
-            >
-              Register Here
-            </Button>
-          </p>
-        </div>
       </div>
     </div>
   );
