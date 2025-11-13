@@ -23,8 +23,15 @@ const Forum = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedQuestion, setSelectedQuestion] = useState<any>(null);
 
+  // NEW: Post Question Modal
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [newQuestion, setNewQuestion] = useState({
+    title: "",
+    description: "",
+    category: "",
+  });
+
   const categories = [
-    "All",
     "Income Tax",
     "GST",
     "International Tax",
@@ -40,6 +47,14 @@ const Forum = () => {
       activeCategory === "All" || q.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
+
+  const handlePost = () => {
+    console.log("Posted Question:", newQuestion);
+
+    // Clear the form & close modal
+    setNewQuestion({ title: "", description: "", category: "" });
+    setShowPostModal(false);
+  };
 
   return (
     <div className="min-h-screen bg-[#F4F7FB] font-[Poppins] pb-20">
@@ -80,26 +95,30 @@ const Forum = () => {
 
         {/* Category Chips */}
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-          {categories.map((category) => {
-            const isActive = activeCategory === category;
-            return (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`
-                  px-4 py-1.5 rounded-full text-sm whitespace-nowrap 
-                  transition-all duration-200 shadow-sm border
-                  ${
-                    isActive
-                      ? "bg-[#0E4C92] text-white border-transparent shadow-md scale-[1.03]"
-                      : "bg-white text-[#0E4C92] border-[#0E4C92]/30 hover:bg-[#0E4C92]/10 hover:scale-[1.05]"
-                  }
-                `}
-              >
-                {category}
-              </button>
-            );
-          })}
+          <button
+            onClick={() => setActiveCategory("All")}
+            className={`px-4 py-1.5 rounded-full text-sm border transition ${
+              activeCategory === "All"
+                ? "bg-[#0E4C92] text-white shadow-md"
+                : "bg-white text-[#0E4C92] border-[#0E4C92]/30 hover:bg-[#0E4C92]/10"
+            }`}
+          >
+            All
+          </button>
+
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-4 py-1.5 rounded-full text-sm border transition ${
+                activeCategory === category
+                  ? "bg-[#0E4C92] text-white shadow-md"
+                  : "bg-white text-[#0E4C92] border-[#0E4C92]/30 hover:bg-[#0E4C92]/10"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
         {/* Questions List */}
@@ -120,12 +139,12 @@ const Forum = () => {
 
                 <div className="flex-1 min-w-0">
                   
-                  <div className="flex items-start justify-between gap-2 mb-1">
+                  <div className="flex items-start justify-between mb-1">
                     <h3 className="font-semibold text-sm line-clamp-2">
                       {question.title}
                     </h3>
                     {question.expertAnswered && (
-                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-600" />
                     )}
                   </div>
 
@@ -159,19 +178,13 @@ const Forum = () => {
             </Card>
           ))}
         </div>
-
-        {filteredQuestions.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500">No questions found</p>
-          </div>
-        )}
       </main>
 
       {/* Floating Create Question Button */}
       <Button
         size="icon"
         className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-2xl bg-[#1C6DD0] hover:bg-[#175EB3] text-white z-50"
-        onClick={() => navigate("/post-question")}
+        onClick={() => setShowPostModal(true)}
       >
         <Plus className="h-6 w-6" />
       </Button>
@@ -225,6 +238,95 @@ const Forum = () => {
           </div>
         </div>
       )}
+
+      {/* ---------- Modal: Post New Question ---------- */}
+      {showPostModal && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center px-4 z-50">
+          <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-lg relative border border-gray-200">
+
+            {/* Close */}
+            <button
+              className="absolute top-3 right-3 text-gray-600 hover:text-black"
+              onClick={() => setShowPostModal(false)}
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <h2 className="text-xl font-semibold text-[#0E4C92] mb-4">
+              Ask a Question
+            </h2>
+
+            {/* Form */}
+            <div className="space-y-4">
+
+              <div>
+                <label className="text-sm font-medium text-gray-600">Title</label>
+                <Input
+                  placeholder="Enter your question title..."
+                  value={newQuestion.title}
+                  onChange={(e) =>
+                    setNewQuestion({ ...newQuestion, title: e.target.value })
+                  }
+                  className="mt-1 rounded-xl"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-600">Description</label>
+                <textarea
+                  placeholder="Enter your detailed question..."
+                  value={newQuestion.description}
+                  onChange={(e) =>
+                    setNewQuestion({
+                      ...newQuestion,
+                      description: e.target.value,
+                    })
+                  }
+                  className="mt-1 w-full h-32 p-3 border border-gray-300 rounded-xl focus:ring-[#0E4C92]"
+                ></textarea>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-600">Category</label>
+                <select
+                  value={newQuestion.category}
+                  onChange={(e) =>
+                    setNewQuestion({ ...newQuestion, category: e.target.value })
+                  }
+                  className="mt-1 w-full p-3 border border-gray-300 rounded-xl focus:ring-[#0E4C92]"
+                >
+                  <option value="">Select Category</option>
+                  {categories.map((cat) => (
+                    <option value={cat} key={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex gap-3 pt-2">
+                <Button
+                  className="flex-1 bg-[#0E4C92] text-white rounded-xl hover:bg-[#0C3F78]"
+                  onClick={handlePost}
+                >
+                  Post Question
+                </Button>
+
+                <Button
+                  className="flex-1 rounded-xl border-gray-300 text-gray-700"
+                  variant="outline"
+                  onClick={() => setShowPostModal(false)}
+                >
+                  Cancel
+                </Button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
