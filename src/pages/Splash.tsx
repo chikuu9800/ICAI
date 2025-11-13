@@ -19,7 +19,9 @@ const Splash = () => {
       {/* Logo */}
       <div>
         <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10">
-          <Building2 className="w-24 h-24 text-white" />
+        <div className="inline-flex items-center justify-center w-[90px] h-[90px] bg-white rounded-2xl shadow-lg mb-4">
+            <img src="/Images/logo.png" className="w-16 h-16" />
+          </div>
         </div>
       </div>
 
