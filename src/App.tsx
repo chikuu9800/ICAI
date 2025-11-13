@@ -16,7 +16,9 @@ import Notifications from "./pages/Notifications";
 import Profile from "./pages/Profile";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
-import Adduser from "./pages/Adduser";
+import Helpdesk from "./pages/Feedback";
+import CertificatesCourses from "./pages/Certification";
+// import Adduser from "./pages/Adduser";
 
 const queryClient = new QueryClient();
 
@@ -33,7 +35,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/publications" element={<Publications />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/adduser" element={<Adduser />} />
+          {/* <Route path="/adduser" element={<Adduser />} /> */}
           <Route path="/dtc-directory" element={<DTCDirectory />} />
           <Route path="/citax-directory" element={<CITAXDirectory />} />
           <Route path="/forum" element={<Forum />} />
@@ -42,24 +44,17 @@ const App = () => (
           <Route path="/profile" element={<Profile />} />
           <Route
             path="/links"
-            element={<PlaceholderPage title="Important Links" description="Quick access to important tax resources and portals." />}
+            element={<PlaceholderPage />}
           />
           <Route
             path="/feedback"
-            element={<PlaceholderPage title="Suggestions & Feedback" description="Share your valuable feedback and suggestions." />}
-          />
-          <Route
-            path="/helpdesk"
-            element={<PlaceholderPage title="Helpdesk" description="Get help and support for the app." />}
+            element={<Helpdesk />}
           />
           <Route
             path="/certificates"
-            element={<PlaceholderPage title="My Certificates" description="View and download your event certificates." />}
+            element={<CertificatesCourses />}
           />
-          <Route
-            path="/settings"
-            element={<PlaceholderPage title="Settings" description="Configure your app preferences." />}
-          />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

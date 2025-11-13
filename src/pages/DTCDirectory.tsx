@@ -125,29 +125,68 @@ const DTCDirectory = () => {
         {/* Tabs */}
         <Tabs defaultValue="chairman" className="w-full">
 
-          <TabsList className="grid w-full grid-cols-3 mb-4 bg-muted/50 rounded-xl">
-            <TabsTrigger value="chairman" className="font-poppins text-xs">
+          <TabsList className="grid grid-cols-3 bg-white p-1 rounded-xl shadow-md mb-4">
+
+            {/* Chairman */}
+            <TabsTrigger
+              value="chairman"
+              className="
+    rounded-lg py-2 
+    data-[state=active]:bg-[#0E4C92] 
+    data-[state=active]:text-white 
+    text-[#0E4C92] 
+    font-medium
+    transition-all
+    duration-200
+  "
+            >
               Chairman
             </TabsTrigger>
-            <TabsTrigger value="vice-chairman" className="font-poppins text-xs">
+
+            {/* Vice Chairman */}
+            <TabsTrigger
+              value="vice-chairman"
+              className="
+    rounded-lg py-2 
+    data-[state=active]:bg-[#0E4C92] 
+    data-[state=active]:text-white 
+    text-[#0E4C92] 
+    font-medium 
+    transition-all
+    duration-200
+  "
+            >
               Vice-Chairman
             </TabsTrigger>
-            <TabsTrigger value="members" className="font-poppins text-xs">
+
+            {/* Members */}
+            <TabsTrigger
+              value="members"
+              className="
+    rounded-lg py-2
+    data-[state=active]:bg-[#0E4C92] 
+    data-[state=active]:text-white 
+    text-[#0E4C92] 
+    font-medium
+    transition-all
+    duration-200
+  "
+            >
               Members
             </TabsTrigger>
+
           </TabsList>
 
-          {/* Chairman */}
+
+          {/* Correct Tab Values */}
           <TabsContent value="chairman" className="space-y-4">
             <ContactCard member={dtcDirectory.chairman} />
           </TabsContent>
 
-          {/* Vice-Chairman */}
           <TabsContent value="vice-chairman" className="space-y-4">
             <ContactCard member={dtcDirectory.viceChairman} />
           </TabsContent>
 
-          {/* Members */}
           <TabsContent value="members" className="space-y-4">
             {dtcDirectory.members.map((member, index) => (
               <ContactCard key={index} member={member} />

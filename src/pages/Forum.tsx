@@ -58,7 +58,7 @@ const Forum = () => {
 
   return (
     <div className="min-h-screen bg-[#F4F7FB] font-[Poppins] pb-20">
-      
+
       {/* Header */}
       <header className="bg-gradient-to-r from-[#0E4C92] to-[#1C6DD0] text-white px-4 py-4 shadow-xl sticky top-0 z-50">
         <div className="flex items-center gap-3">
@@ -81,7 +81,7 @@ const Forum = () => {
       </header>
 
       <main className="p-4 space-y-4">
-        
+
         {/* Search Bar */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -95,30 +95,40 @@ const Forum = () => {
 
         {/* Category Chips */}
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+
+          {/* ALL Category */}
           <button
             onClick={() => setActiveCategory("All")}
-            className={`px-4 py-1.5 rounded-full text-sm border transition ${
-              activeCategory === "All"
-                ? "bg-[#0E4C92] text-white shadow-md"
-                : "bg-white text-[#0E4C92] border-[#0E4C92]/30 hover:bg-[#0E4C92]/10"
-            }`}
+            className={`
+      px-4 py-1.5 rounded-full text-sm whitespace-nowrap 
+      transition-all duration-200 shadow-sm border
+      ${activeCategory === "All"
+                ? "bg-[#0E4C92] text-white border-transparent shadow-md scale-[1.03]"
+                : "bg-white text-[#0E4C92] border-[#0E4C92]/30 hover:bg-[#0E4C92]/10 hover:scale-[1.05]"
+              }
+    `}
           >
             All
           </button>
 
+          {/* Other Categories */}
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-1.5 rounded-full text-sm border transition ${
-                activeCategory === category
-                  ? "bg-[#0E4C92] text-white shadow-md"
-                  : "bg-white text-[#0E4C92] border-[#0E4C92]/30 hover:bg-[#0E4C92]/10"
-              }`}
+              className={`
+        px-4 py-1.5 rounded-full text-sm whitespace-nowrap 
+        transition-all duration-200 shadow-sm border
+        ${activeCategory === category
+                  ? "bg-[#0E4C92] text-white border-transparent shadow-md scale-[1.03]"
+                  : "bg-white text-[#0E4C92] border-[#0E4C92]/30 hover:bg-[#0E4C92]/10 hover:scale-[1.05]"
+                }
+      `}
             >
               {category}
             </button>
           ))}
+
         </div>
 
         {/* Questions List */}
@@ -138,7 +148,7 @@ const Forum = () => {
                 </Avatar>
 
                 <div className="flex-1 min-w-0">
-                  
+
                   <div className="flex items-start justify-between mb-1">
                     <h3 className="font-semibold text-sm line-clamp-2">
                       {question.title}

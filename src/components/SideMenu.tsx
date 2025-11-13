@@ -23,10 +23,10 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
     { icon: BookOpen, label: "Publications", route: "/publications" },
     { icon: Megaphone, label: "Announcements", route: "/announcements" },
     { icon: Calendar, label: "Events & Webinars", route: "/events" },
-    { icon: User2Icon, label: "Add user", route: "/adduser" },
+    // { icon: User2Icon, label: "Add user", route: "/adduser" },
     { icon: MessageCircle, label: "Discussion Forum", route: "/forum" },
     { icon: Link, label: "Important Links", route: "/links" },
-    { icon: MessageSquare, label: "Suggestions & Feedback", route: "/feedback" },
+    { icon: MessageSquare, label: "Helpdesk", route: "/feedback" },
     { icon: Award, label: "My Certificates", route: "/certificates" },
     { icon: Settings, label: "Settings", route: "/settings" },
   ];
