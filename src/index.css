@@ -231,3 +231,12 @@ All colors MUST be HSL.
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary-light));
 }
+
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/Fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-display: swap;
+}

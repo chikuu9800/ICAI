@@ -1,4 +1,8 @@
-import { Home, BookOpen, Users, Megaphone, Calendar, MessageCircle, Link, MessageSquare, Settings, LogOut, Award } from "lucide-react";
+import { 
+  Home, BookOpen, Users, Megaphone, Calendar, 
+  MessageCircle, Link, MessageSquare, Settings, 
+  LogOut, Award 
+} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -32,25 +36,28 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
   };
 
   return (
-    <div className="h-full bg-sidebar flex flex-col">
+    <div className="h-full bg-gradient-to-b from-[#0E4C92] to-[#1C6DD0] text-white flex flex-col font-poppins shadow-xl">
+
       {/* Profile Section */}
-      <div className="p-6 bg-sidebar-primary">
-        <div className="flex items-center gap-3 mb-4">
-          <Avatar className="h-16 w-16 border-2 border-white">
-            <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${currentUser.name}&backgroundColor=f59e0b`} />
-            <AvatarFallback className="bg-secondary text-white text-lg">
-              {currentUser.name.split(" ").map(n => n[0]).join("")}
+      <div className="p-6 bg-white/10 backdrop-blur-md border-b border-white/10">
+        <div className="flex items-center gap-4 mb-4">
+          <Avatar className="h-16 w-16 border-2 border-white shadow-md">
+            <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${currentUser.name}&backgroundColor=1C6DD0&textColor=ffffff`} />
+            <AvatarFallback className="bg-blue-500 text-white text-lg">
+              {currentUser.name.split(" ").map((n) => n[0]).join("")}
             </AvatarFallback>
           </Avatar>
-          <div className="flex-1 text-white">
-            <h3 className="font-bold text-lg">{currentUser.name}</h3>
-            <p className="text-sm opacity-90">{currentUser.membershipNo}</p>
+
+          <div className="flex-1">
+            <h3 className="font-semibold text-lg">{currentUser.name}</h3>
+            <p className="text-sm text-white/80">{currentUser.membershipNo}</p>
           </div>
         </div>
+
         <Button
           variant="outline"
           size="sm"
-          className="w-full bg-white/10 text-white border-white/20 hover:bg-white/20"
+          className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20"
           onClick={() => handleNavigation("/profile")}
         >
           Edit Profile
@@ -58,12 +65,12 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
       </div>
 
       {/* Menu Items */}
-      <div className="flex-1 overflow-y-auto py-4">
+      <div className="flex-1 overflow-y-auto py-3">
         {menuItems.map((item, index) => (
           <Button
             key={index}
             variant="ghost"
-            className="w-full justify-start px-6 py-3 text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+            className="w-full justify-start px-6 py-3 text-white/90 hover:bg-white/10 hover:text-white transition rounded-none"
             onClick={() => handleNavigation(item.route)}
           >
             <item.icon className="h-5 w-5 mr-3" />
@@ -72,13 +79,13 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
         ))}
       </div>
 
-      <Separator className="bg-sidebar-border" />
+      <Separator className="bg-white/10" />
 
       {/* Logout */}
       <div className="p-4">
         <Button
           variant="ghost"
-          className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10"
+          className="w-full justify-start text-red-300 hover:text-red-500 hover:bg-red-500/10 transition"
           onClick={() => {
             navigate("/login");
             onClose();
@@ -87,10 +94,12 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
           <LogOut className="h-5 w-5 mr-3" />
           Logout
         </Button>
-        <p className="text-xs text-center text-muted-foreground mt-4">
+
+        <p className="text-xs text-center text-white/60 mt-4">
           App Version 1.0.0
         </p>
       </div>
+
     </div>
   );
 };
