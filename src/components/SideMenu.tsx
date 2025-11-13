@@ -28,7 +28,7 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
     { icon: Link, label: "Important Links", route: "/links" },
     { icon: MessageSquare, label: "Helpdesk", route: "/feedback" },
     { icon: Award, label: "My Certificates", route: "/certificates" },
-    { icon: Settings, label: "Settings", route: "/settings" },
+    // { icon: Settings, label: "Settings", route: "/settings" },
   ];
 
   const handleNavigation = (route: string) => {
