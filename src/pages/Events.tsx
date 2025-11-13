@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ArrowLeft, Calendar, MapPin, Video, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -12,23 +11,32 @@ const Events = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#F4F7FB] font-[Poppins]">
+
       {/* Header */}
-      <header className="bg-primary text-white px-4 py-4 shadow-lg sticky top-0 z-50">
+      <header className="bg-gradient-to-r from-[#0E4C92] to-[#1C6DD0] text-white px-4 py-4 shadow-xl sticky top-0 z-50">
         <div className="flex items-center gap-3">
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/20"
+            className="text-white hover:bg-white/20 rounded-full"
             onClick={() => navigate("/dashboard")}
           >
             <ArrowLeft className="h-6 w-6" />
           </Button>
+
           <div className="flex-1">
-            <h1 className="text-lg font-semibold">Events & Webinars</h1>
+            <h1 className="text-xl font-semibold tracking-wide">
+              Events & Webinars
+            </h1>
             <p className="text-xs text-white/80">Stay Updated</p>
           </div>
-          <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white hover:bg-white/20 rounded-full"
+          >
             <Calendar className="h-6 w-6" />
           </Button>
         </div>
@@ -36,44 +44,78 @@ const Events = () => {
 
       <main className="p-4">
         <Tabs defaultValue="upcoming" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-4">
-            <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-            <TabsTrigger value="past">Past</TabsTrigger>
-            <TabsTrigger value="registered">Registered</TabsTrigger>
+
+          {/* Tabs */}
+          <TabsList className="grid grid-cols-3 bg-white p-1 rounded-xl shadow-sm mb-4">
+            <TabsTrigger
+              value="upcoming"
+              className="rounded-lg data-[state=active]:bg-[#0E4C92] data-[state=active]:text-white font-medium text-[#0E4C92]"
+            >
+              Upcoming
+            </TabsTrigger>
+            <TabsTrigger
+              value="past"
+              className="rounded-lg data-[state=active]:bg-[#0E4C92] data-[state=active]:text-white font-medium text-[#0E4C92]"
+            >
+              Past
+            </TabsTrigger>
+            <TabsTrigger
+              value="registered"
+              className="rounded-lg data-[state=active]:bg-[#0E4C92] data-[state=active]:text-white font-medium text-[#0E4C92]"
+            >
+              Registered
+            </TabsTrigger>
           </TabsList>
 
+          {/* Upcoming Events */}
           <TabsContent value="upcoming" className="space-y-4">
             {upcomingEvents.map((event) => (
-              <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="bg-gradient-to-r from-primary to-primary-light p-4 text-white">
+              <Card
+                key={event.id}
+                className="overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-lg border border-gray-100 transition"
+              >
+                {/* Top Gradient Section */}
+                <div className="bg-gradient-to-r from-[#0E4C92] to-[#1C6DD0] p-4 text-white">
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex-1">
-                      <h3 className="font-bold text-lg mb-1">{event.title}</h3>
+                      <h3 className="font-semibold text-lg leading-tight mb-1">
+                        {event.title}
+                      </h3>
+
                       <div className="flex items-center gap-2 text-sm opacity-90">
                         <Calendar className="h-4 w-4" />
                         <span>{event.date}</span>
                       </div>
+
                       <p className="text-sm opacity-90 mt-1">{event.time}</p>
                     </div>
-                    <Badge className="bg-white/20 text-white border-0">
+
+                    <Badge className="bg-white/25 text-white border-none px-3 py-1 rounded-full">
                       {event.status === "open" ? "Open" : "Early Bird"}
                     </Badge>
                   </div>
                 </div>
 
-                <div className="p-4 space-y-3">
+                {/* Event Body */}
+                <div className="p-4 space-y-4">
+
+                  {/* Speaker */}
                   <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10">
+                    <Avatar className="h-12 w-12">
                       <AvatarImage src={event.speakerImage} />
-                      <AvatarFallback>SP</AvatarFallback>
+                      <AvatarFallback className="bg-[#0E4C92]/20 text-[#0E4C92]">
+                        SP
+                      </AvatarFallback>
                     </Avatar>
-                    <div className="flex-1">
+
+                    <div>
                       <p className="text-sm font-medium">{event.speaker}</p>
-                      <p className="text-xs text-muted-foreground">Speaker</p>
+                      <p className="text-xs text-gray-500">Speaker</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  {/* Mode */}
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
                     {event.mode.includes("Online") ? (
                       <Video className="h-4 w-4" />
                     ) : (
@@ -82,12 +124,14 @@ const Events = () => {
                     <span>{event.mode}</span>
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  {/* Seats */}
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
                     <Users className="h-4 w-4" />
                     <span>Seats: {event.seats}</span>
                   </div>
 
-                  <Button className="w-full bg-primary hover:bg-primary-light">
+                  {/* Register Button */}
+                  <Button className="w-full bg-[#0E4C92] hover:bg-[#0C3F78] text-white rounded-xl">
                     Register Now
                   </Button>
                 </div>
@@ -95,20 +139,26 @@ const Events = () => {
             ))}
           </TabsContent>
 
-          <TabsContent value="past" className="space-y-4">
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">No past events</p>
+          {/* Past Events */}
+          <TabsContent value="past">
+            <div className="text-center py-12 text-gray-600">
+              No past events
             </div>
           </TabsContent>
 
-          <TabsContent value="registered" className="space-y-4">
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">You haven't registered for any events yet</p>
-              <Button className="mt-4" onClick={() => navigate("/events")}>
+          {/* Registered Events */}
+          <TabsContent value="registered">
+            <div className="text-center py-12 text-gray-600">
+              You haven't registered for any events yet
+              <Button
+                className="mt-4 bg-[#0E4C92] hover:bg-[#0C3F78] text-white rounded-xl"
+                onClick={() => navigate("/events")}
+              >
                 Browse Events
               </Button>
             </div>
           </TabsContent>
+
         </Tabs>
       </main>
     </div>

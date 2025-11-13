@@ -50,31 +50,44 @@ const DTCDirectory = () => {
       </div>
 
       {/* Action Buttons */}
+      {/* Action Buttons */}
       <div className="flex gap-2 mt-4">
 
-        {/* Call Working */}
-        <a href={`tel:${member.phone}`} className="flex-1">
-          <Button size="sm" variant="outline" className="w-full font-poppins">
-            <Phone className="h-4 w-4 mr-1" />
-            Call
-          </Button>
-        </a>
+        {/* Call */}
+        <Button
+          size="sm"
+          className="flex-1 rounded-xl bg-[#0E4C92] text-white hover:bg-[#0C3F78]"
+          onClick={() => window.location.href = `tel:${member.phone}`}
+        >
+          <Phone className="h-4 w-4 mr-1" />
+          Call
+        </Button>
 
-        {/* Email Working */}
-        <a href={`mailto:${member.email}`} className="flex-1">
-          <Button size="sm" variant="outline" className="w-full font-poppins">
-            <Mail className="h-4 w-4 mr-1" />
-            Email
-          </Button>
-        </a>
+        {/* Email */}
+        <Button
+          size="sm"
+          className="flex-1 rounded-xl bg-[#1C6DD0] text-white hover:bg-[#175EB3]"
+          onClick={() => window.location.href = `mailto:${member.email}`}
+        >
+          <Mail className="h-4 w-4 mr-1" />
+          Email
+        </Button>
 
-        {/* Chat (No action added) */}
-        <Button size="sm" variant="outline" className="flex-1 font-poppins">
+        {/* WhatsApp Chat */}
+        <Button
+          size="sm"
+          variant="outline"
+          className="flex-1 rounded-xl border-[#0E4C92] text-[#0E4C92] hover:bg-[#0E4C92]/10"
+          onClick={() =>
+            window.open(`https://wa.me/${member.phone.replace(/\D/g, "")}`, "_blank")
+          }
+        >
           <MessageCircle className="h-4 w-4 mr-1" />
           Chat
         </Button>
 
       </div>
+
     </Card>
   );
 
