@@ -84,7 +84,24 @@ export const publications = [
     date: "15 Jan 2025",
     size: "2.5 MB",
     downloads: 1247,
+
+    // --- Audit Trail ---
+    createdBy: "Admin A",
+    createdAt: "10 Jan 2025, 11:30 AM",
+
+    editedBy: "Editor 1",
+    editedAt: "14 Jan 2025, 4:15 PM",
+
+    approvedBy: "Super Admin",
+    publishedAt: "15 Jan 2025, 9:00 AM",
+    unpublishedAt: null,
+
+    versions: [
+      { version: 1, editedBy: "Admin A", date: "10 Jan 2025" },
+      { version: 2, editedBy: "Editor 1", date: "14 Jan 2025" },
+    ],
   },
+
   {
     id: "2",
     title: "Technical Guide on International Taxation",
@@ -92,7 +109,22 @@ export const publications = [
     date: "10 Jan 2025",
     size: "4.2 MB",
     downloads: 856,
+
+    createdBy: "Admin B",
+    createdAt: "03 Jan 2025, 2:10 PM",
+
+    editedBy: "Editor 2",
+    editedAt: "08 Jan 2025, 12:20 PM",
+
+    approvedBy: "Super Admin",
+    publishedAt: "10 Jan 2025, 10:00 AM",
+    unpublishedAt: null,
+
+    versions: [
+      { version: 1, editedBy: "Admin B", date: "03 Jan 2025" },
+    ],
   },
+
   {
     id: "3",
     title: "Background Material on Direct Tax Laws",
@@ -100,7 +132,20 @@ export const publications = [
     date: "05 Jan 2025",
     size: "8.1 MB",
     downloads: 2341,
+
+    createdBy: "Admin A",
+    createdAt: "28 Dec 2024, 3:45 PM",
+
+    editedBy: null,
+    editedAt: null,
+
+    approvedBy: "Super Admin",
+    publishedAt: "05 Jan 2025, 10:00 AM",
+    unpublishedAt: null,
+
+    versions: [],
   },
+
   {
     id: "4",
     title: "Income Tax Act, 1961 (Updated)",
@@ -108,7 +153,23 @@ export const publications = [
     date: "01 Jan 2025",
     size: "15.3 MB",
     downloads: 5678,
+
+    createdBy: "Admin C",
+    createdAt: "20 Dec 2024, 11:40 AM",
+
+    editedBy: "Editor 3",
+    editedAt: "28 Dec 2024, 6:40 PM",
+
+    approvedBy: "Super Admin",
+    publishedAt: "01 Jan 2025, 9:00 AM",
+    unpublishedAt: null,
+
+    versions: [
+      { version: 1, editedBy: "Admin C", date: "20 Dec 2024" },
+      { version: 2, editedBy: "Editor 3", date: "28 Dec 2024" },
+    ],
   },
+
   {
     id: "5",
     title: "CBDT Circular No. 1/2025",
@@ -116,7 +177,20 @@ export const publications = [
     date: "28 Dec 2024",
     size: "856 KB",
     downloads: 3456,
+
+    createdBy: "Admin D",
+    createdAt: "22 Dec 2024, 9:30 AM",
+
+    editedBy: null,
+    editedAt: null,
+
+    approvedBy: "Super Admin",
+    publishedAt: "28 Dec 2024, 10:00 AM",
+    unpublishedAt: null,
+
+    versions: [],
   },
+
   {
     id: "6",
     title: "Guidance Note on Transfer Pricing",
@@ -124,6 +198,21 @@ export const publications = [
     date: "20 Dec 2024",
     size: "3.4 MB",
     downloads: 1890,
+
+    createdBy: "Admin A",
+    createdAt: "10 Dec 2024, 4:50 PM",
+
+    editedBy: "Editor 2",
+    editedAt: "18 Dec 2024, 5:20 PM",
+
+    approvedBy: "Super Admin",
+    publishedAt: "20 Dec 2024, 9:00 AM",
+    unpublishedAt: "05 Jan 2025, 3:00 PM",
+
+    versions: [
+      { version: 1, editedBy: "Admin A", date: "10 Dec 2024" },
+      { version: 2, editedBy: "Editor 2", date: "18 Dec 2024" },
+    ],
   },
 ];
 

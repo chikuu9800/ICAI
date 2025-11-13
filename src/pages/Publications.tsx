@@ -192,33 +192,86 @@ const Publications = () => {
 
       {/* Modal */}
       {selectedPub && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-lg w-full relative border border-gray-200">
+  <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4 overflow-y-auto py-6">
+    <div className="bg-white rounded-2xl shadow-xl p-6 max-w-lg w-full relative border border-gray-200">
 
-            <button
-              className="absolute top-3 right-3 text-gray-600 hover:text-black"
-              onClick={() => setSelectedPub(null)}
-            >
-              <X className="h-5 w-5" />
-            </button>
+      {/* Top Right Close Button */}
+      <button
+        className="absolute top-3 right-3 bg-gray-200 hover:bg-gray-300 p-2 rounded-full transition"
+        onClick={() => setSelectedPub(null)}
+      >
+        <X className="h-4 w-4 text-gray-700" />
+      </button>
 
-            <h2 className="text-lg font-semibold text-[#0E4C92] mb-2">
-              {selectedPub.title}
-            </h2>
+      {/* Title */}
+      <h2 className="text-xl font-semibold text-[#0E4C92] mb-4 mt-8">
+        {selectedPub.title}
+      </h2>
 
-            <div className="text-sm text-gray-600 space-y-1 mb-4">
-              <p><strong>Category:</strong> {selectedPub.category}</p>
-              <p><strong>Date:</strong> {selectedPub.date}</p>
-              <p><strong>Size:</strong> {selectedPub.size}</p>
-            </div>
+      {/* Basic Info */}
+      <div className="space-y-2 text-sm text-gray-700 mb-4">
+        <p><strong>Category:</strong> {selectedPub.category}</p>
+        <p><strong>Date:</strong> {selectedPub.date}</p>
+        <p><strong>Size:</strong> {selectedPub.size}</p>
+        <p><strong>Downloads:</strong> {selectedPub.downloads}</p>
+      </div>
 
-            <p className="text-sm text-gray-700 leading-relaxed">
-              {selectedPub.description || "No description available."}
-            </p>
+      {/* Audit Trail */}
+      <h3 className="text-md font-semibold text-[#0E4C92] mb-2">Audit Trail</h3>
 
+      <div className="space-y-1 text-sm text-gray-600 mb-4">
+        <p><strong>Created By:</strong> {selectedPub.createdBy || "—"}</p>
+        <p><strong>Created At:</strong> {selectedPub.createdAt || "—"}</p>
+        <p><strong>Last Edited By:</strong> {selectedPub.editedBy || "—"}</p>
+        <p><strong>Last Edited At:</strong> {selectedPub.editedAt || "—"}</p>
+        <p><strong>Approved/Published By:</strong> {selectedPub.approvedBy || "—"}</p>
+        <p><strong>Published At:</strong> {selectedPub.publishedAt || "—"}</p>
+        <p><strong>Unpublished At:</strong> {selectedPub.unpublishedAt || "—"}</p>
+      </div>
+
+      {/* Version History */}
+      {selectedPub.versions?.length > 0 && (
+        <div>
+          <h3 className="text-md font-semibold text-[#0E4C92] mb-2">
+            Version History
+          </h3>
+
+          <div className="space-y-2 text-sm text-gray-600">
+            {selectedPub.versions.map((v, index) => (
+              <div
+                key={index}
+                className="p-3 border rounded-xl bg-gray-50 shadow-sm"
+              >
+                <p><strong>Version:</strong> {v.version}</p>
+                <p><strong>Edited By:</strong> {v.editedBy}</p>
+                <p><strong>Date:</strong> {v.date}</p>
+              </div>
+            ))}
           </div>
         </div>
       )}
+
+      {/* Description */}
+      <h3 className="text-md font-semibold text-[#0E4C92] mt-5 mb-1">
+        Description
+      </h3>
+
+      <p className="text-sm text-gray-700 leading-relaxed pb-4">
+        {selectedPub.description || "No description available."}
+      </p>
+
+      {/* Bottom Close Button */}
+      <Button
+        onClick={() => setSelectedPub(null)}
+        className="w-full bg-[#0E4C92] text-white mt-3 rounded-xl hover:bg-[#0C3F78]"
+      >
+        Close
+      </Button>
+
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
