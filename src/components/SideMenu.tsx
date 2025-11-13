@@ -1,7 +1,7 @@
 import { 
   Home, BookOpen, Users, Megaphone, Calendar, 
   MessageCircle, Link, MessageSquare, Settings, 
-  LogOut, Award 
+  LogOut, Award ,User2Icon
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,7 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
     { icon: BookOpen, label: "Publications", route: "/publications" },
     { icon: Megaphone, label: "Announcements", route: "/announcements" },
     { icon: Calendar, label: "Events & Webinars", route: "/events" },
+    { icon: User2Icon, label: "Add user", route: "/adduser" },
     { icon: MessageCircle, label: "Discussion Forum", route: "/forum" },
     { icon: Link, label: "Important Links", route: "/links" },
     { icon: MessageSquare, label: "Suggestions & Feedback", route: "/feedback" },

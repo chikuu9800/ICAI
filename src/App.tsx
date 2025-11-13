@@ -16,6 +16,7 @@ import Notifications from "./pages/Notifications";
 import Profile from "./pages/Profile";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
+import Adduser from "./pages/Adduser";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/publications" element={<Publications />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/adduser" element={<Adduser />} />
           <Route path="/dtc-directory" element={<DTCDirectory />} />
           <Route path="/citax-directory" element={<CITAXDirectory />} />
           <Route path="/forum" element={<Forum />} />
