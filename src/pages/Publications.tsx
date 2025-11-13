@@ -192,7 +192,7 @@ const Publications = () => {
 
       {/* Modal */}
       {selectedPub && (
-  <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4 overflow-y-auto py-6">
+  <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-start justify-center z-50 px-4 overflow-y-auto py-6">
     <div className="bg-white rounded-2xl shadow-xl p-6 max-w-lg w-full relative border border-gray-200">
 
       {/* Top Right Close Button */}
