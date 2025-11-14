@@ -38,6 +38,7 @@ const Helpdesk = () => {
     const [chatInput, setChatInput] = useState("");
     const [chatMessages, setChatMessages] = useState<any[]>([]);
     const [showBugModal, setShowBugModal] = useState(false);
+    const [rating, setRating] = useState(0);
 
     const [bugData, setBugData] = useState({
         type: "",
@@ -149,13 +150,15 @@ const Helpdesk = () => {
                 {/* CHATBOT */}
                 <h2 className="font-semibold text-lg text-[#0E4C92] mt-6">Chat with AI Assistant</h2>
                 <Card className="p-4 rounded-xl shadow-sm bg-white">
+
+                    {/* Chat Messages */}
                     <div className="h-64 overflow-y-auto pr-2 space-y-3">
                         {chatMessages.map((msg, index) => (
                             <div
                                 key={index}
                                 className={`p-3 rounded-xl max-w-[80%] ${msg.from === "user"
-                                        ? "ml-auto bg-[#1C6DD0] text-white"
-                                        : "bg-gray-100 text-gray-800"
+                                    ? "ml-auto bg-[#1C6DD0] text-white"
+                                    : "bg-gray-100 text-gray-800"
                                     }`}
                             >
                                 {msg.text}
@@ -163,6 +166,32 @@ const Helpdesk = () => {
                         ))}
                     </div>
 
+                    {/* Suggested Questions */}
+                    <div className="mt-4">
+                        <p className="text-xs font-semibold text-gray-500 mb-2">
+                            Try asking:
+                        </p>
+
+                        <div className="flex flex-wrap gap-2">
+                            {[
+                                "hello",
+                                "events",
+                                "publication",
+                                "error",
+                                "contact"
+                            ].map((q, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setChatInput(q)}   // <-- THIS PUTS TEXT IN INPUT
+                                    className="text-xs bg-gray-100 px-3 py-1 rounded-full border hover:bg-gray-200 transition"
+                                >
+                                    {q}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Input Box */}
                     <div className="flex gap-2 mt-4">
                         <Input
                             placeholder="Ask something..."
@@ -176,6 +205,54 @@ const Helpdesk = () => {
                     </div>
                 </Card>
 
+                <h2 className="font-semibold text-lg text-[#0E4C92] mt-6">Share Your Feedback</h2>
+
+                <Card className="p-5 rounded-xl shadow-sm bg-white space-y-4 mt-2">
+
+                    {/* Name */}
+                    <div>
+                        <label className="text-sm font-medium text-gray-600">Your Name</label>
+                        <Input
+                            placeholder="Enter your name"
+                            className="mt-1 rounded-xl"
+                        />
+                    </div>
+
+                    {/* Rating */}
+                    <div>
+                        <label className="font-semibold text-lg text-[#0E4C92] mt-6">Rate Your Experience</label>
+
+                        <div className="flex gap-2 mt-1">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <button
+                                    key={star}
+                                    onClick={() => setRating(star)}
+                                    className={`text-2xl transition hover:scale-110
+                ${star <= rating ? "text-yellow-500" : "text-gray-300"}
+            `}
+                                >
+                                    ★
+                                </button>
+                            ))}
+                        </div>
+
+                    </div>
+
+                    {/* Feedback Box */}
+                    <div>
+                        <label className="text-sm font-medium text-gray-600">Your Feedback</label>
+                        <Textarea
+                            className="mt-1 rounded-xl"
+                            placeholder="Tell us about your experience…"
+                            rows={4}
+                        />
+                    </div>
+
+                    {/* Submit Button */}
+                    <Button className="w-full bg-[#0E4C92] hover:bg-[#0C3F78] text-white rounded-xl">
+                        Submit Feedback
+                    </Button>
+                </Card>
                 {/* CONTACT */}
                 <h2 className="font-semibold text-lg text-[#0E4C92] mt-6">Contact Support</h2>
                 <div className="flex gap-3">
@@ -249,6 +326,7 @@ const Helpdesk = () => {
                     </div>
                 </div>
             )}
+
         </div>
     );
 };
