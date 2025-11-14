@@ -18,6 +18,7 @@ import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 import Helpdesk from "./pages/Feedback";
 import CertificatesCourses from "./pages/Certification";
+import Branch from "./pages/Branch";
 // import Adduser from "./pages/Adduser";
 
 const queryClient = new QueryClient();
@@ -30,8 +31,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/splash" replace />} />
+
           <Route path="/splash" element={<Splash />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/select-branch" element={<Branch />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/publications" element={<Publications />} />
           <Route path="/events" element={<Events />} />

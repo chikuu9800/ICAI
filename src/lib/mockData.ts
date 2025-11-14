@@ -1,4 +1,23 @@
 // Mock Data for ICAI Mobile App
+export const committees = {
+  DTC: {
+    id: 'dtc',
+    name: 'Direct Taxes Committee',
+    abbreviation: 'DTC',
+    chairmanName: 'CA. Rajesh Kumar',
+    chairmanImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DTCChairman',
+    description: 'Leading direct taxation guidance and policy recommendations'
+  },
+  CITAX: {
+    id: 'citax',
+    name: 'Committee on International Taxation',
+    abbreviation: 'CITAX',
+    chairmanName: 'CA. Priya Sharma',
+    chairmanImage: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CITAXChairman',
+    description: 'Advancing international taxation standards and practices'
+  }
+};
+
 
 export const currentUser = {
   name: "CA Rajesh Kumar",
@@ -85,13 +104,12 @@ export const publications = [
     size: "2.5 MB",
     downloads: 1247,
 
-    // --- Audit Trail ---
+    pdfUrl: "/pdf/sample-guidance-note.pdf",
+
     createdBy: "Admin A",
     createdAt: "10 Jan 2025, 11:30 AM",
-
     editedBy: "Editor 1",
     editedAt: "14 Jan 2025, 4:15 PM",
-
     approvedBy: "Super Admin",
     publishedAt: "15 Jan 2025, 9:00 AM",
     unpublishedAt: null,
@@ -110,19 +128,17 @@ export const publications = [
     size: "4.2 MB",
     downloads: 856,
 
+    pdfUrl: "/pdf/sample-guidance-note.pdf",
+
     createdBy: "Admin B",
     createdAt: "03 Jan 2025, 2:10 PM",
-
     editedBy: "Editor 2",
     editedAt: "08 Jan 2025, 12:20 PM",
-
     approvedBy: "Super Admin",
     publishedAt: "10 Jan 2025, 10:00 AM",
     unpublishedAt: null,
 
-    versions: [
-      { version: 1, editedBy: "Admin B", date: "03 Jan 2025" },
-    ],
+    versions: [{ version: 1, editedBy: "Admin B", date: "03 Jan 2025" }],
   },
 
   {
@@ -133,12 +149,12 @@ export const publications = [
     size: "8.1 MB",
     downloads: 2341,
 
+    pdfUrl: "/pdf/sample-guidance-note.pdf",
+
     createdBy: "Admin A",
     createdAt: "28 Dec 2024, 3:45 PM",
-
     editedBy: null,
     editedAt: null,
-
     approvedBy: "Super Admin",
     publishedAt: "05 Jan 2025, 10:00 AM",
     unpublishedAt: null,
@@ -154,12 +170,12 @@ export const publications = [
     size: "15.3 MB",
     downloads: 5678,
 
+    pdfUrl: "/pdf/sample-guidance-note.pdf",
+
     createdBy: "Admin C",
     createdAt: "20 Dec 2024, 11:40 AM",
-
     editedBy: "Editor 3",
     editedAt: "28 Dec 2024, 6:40 PM",
-
     approvedBy: "Super Admin",
     publishedAt: "01 Jan 2025, 9:00 AM",
     unpublishedAt: null,
@@ -178,12 +194,12 @@ export const publications = [
     size: "856 KB",
     downloads: 3456,
 
+    pdfUrl: "/pdf/sample-guidance-note.pdf",
+
     createdBy: "Admin D",
     createdAt: "22 Dec 2024, 9:30 AM",
-
     editedBy: null,
     editedAt: null,
-
     approvedBy: "Super Admin",
     publishedAt: "28 Dec 2024, 10:00 AM",
     unpublishedAt: null,
@@ -199,12 +215,12 @@ export const publications = [
     size: "3.4 MB",
     downloads: 1890,
 
+    pdfUrl: "/pdf/sample-guidance-note.pdf",
+
     createdBy: "Admin A",
     createdAt: "10 Dec 2024, 4:50 PM",
-
     editedBy: "Editor 2",
     editedAt: "18 Dec 2024, 5:20 PM",
-
     approvedBy: "Super Admin",
     publishedAt: "20 Dec 2024, 9:00 AM",
     unpublishedAt: "05 Jan 2025, 3:00 PM",
@@ -215,6 +231,7 @@ export const publications = [
     ],
   },
 ];
+
 
 export const announcements = [
   {
@@ -266,45 +283,73 @@ export const upcomingEvents = [
     date: "20 Nov 2025",
     time: "3:00 PM - 5:00 PM",
     speaker: "CA Sanjay Agarwal",
-    speakerImage: "https://api.dicebear.com/7.x/initials/svg?seed=SA&backgroundColor=1e3a8a",
+    speakerImage:
+      "https://api.dicebear.com/7.x/initials/svg?seed=SA&backgroundColor=1e3a8a",
     mode: "Online Webinar",
     seats: "500/1000",
     status: "open",
+    link: "https://example.com/events/budget-2025-analysis",
+
+    // ➤ NEW
+    videoUrl: "https://www.youtube.com/embed/ExShUp0KFU4?si=ASiksm7hjNqdeBAY",
+    isRegistered: false,
   },
+
   {
     id: "2",
     title: "Transfer Pricing Workshop",
     date: "25 Nov 2025",
     time: "10:00 AM - 6:00 PM",
     speaker: "CA Priya Sharma",
-    speakerImage: "https://api.dicebear.com/7.x/initials/svg?seed=PS&backgroundColor=1e3a8a",
+    speakerImage:
+      "https://api.dicebear.com/7.x/initials/svg?seed=PS&backgroundColor=1e3a8a",
     mode: "Physical - Mumbai",
-    seats: "45/50",
-    status: "open",
+    seats: "50/50",
+    status: "closed",
+    link: "https://example.com/events/budget-2025-analysis",
+
+    // ➤ CLOSED EVENT → NO REGISTRATION OR WATCH BUTTON
+    videoUrl: null,
+    isRegistered: false,
   },
+
   {
     id: "3",
     title: "TDS & TCS Latest Updates",
     date: "28 Nov 2025",
     time: "4:00 PM - 5:30 PM",
     speaker: "CA Neha Gupta",
-    speakerImage: "https://api.dicebear.com/7.x/initials/svg?seed=NG&backgroundColor=1e3a8a",
+    speakerImage:
+      "https://api.dicebear.com/7.x/initials/svg?seed=NG&backgroundColor=1e3a8a",
     mode: "Online Webinar",
     seats: "Unlimited",
     status: "open",
+    link: "https://example.com/events/budget-2025-analysis",
+
+    // ➤ NEW
+    videoUrl: "https://www.youtube.com/embed/ExShUp0KFU4?si=ASiksm7hjNqdeBAY",
+    isRegistered: false,
   },
+
   {
     id: "4",
     title: "International Tax Seminar",
     date: "02 Dec 2025",
     time: "9:00 AM - 5:00 PM",
     speaker: "CA Dheeraj Sharma",
-    speakerImage: "https://api.dicebear.com/7.x/initials/svg?seed=DS&backgroundColor=1e3a8a",
+    speakerImage:
+      "https://api.dicebear.com/7.x/initials/svg?seed=DS&backgroundColor=1e3a8a",
     mode: "Physical - Delhi",
     seats: "80/100",
     status: "early-bird",
+    link: "https://example.com/events/budget-2025-analysis",
+
+    // ➤ NEW
+    videoUrl: "https://www.youtube.com/embed/ExShUp0KFU4?si=ASiksm7hjNqdeBAY",
+    isRegistered: false,
   },
 ];
+
 
 export const forumQuestions = [
   {
@@ -385,5 +430,23 @@ export const notifications = [
     time: "1 day ago",
     unread: false,
     action: "Join Now",
+  },
+];
+
+
+export const mockLoginUsers = [
+  {
+    name: "CA Rajesh Kumar",
+    membershipNo: "FCA-123456",
+    email: "rajesh.kumar@icai.org",
+    mobile: "9876543210",
+    otp: "123456", // for testing
+  },
+  {
+    name: "CA Priya Sharma",
+    membershipNo: "MNO-789012",
+    email: "priya.sharma@icai.org",
+    mobile: "9988776655",
+    otp: "654321",
   },
 ];

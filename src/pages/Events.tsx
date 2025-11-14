@@ -1,4 +1,12 @@
-import { ArrowLeft, Calendar, MapPin, Video, Users } from "lucide-react";
+import { useState } from "react";
+import {
+  ArrowLeft,
+  Calendar,
+  MapPin,
+  Video,
+  Users,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +17,24 @@ import { useNavigate } from "react-router-dom";
 
 const Events = () => {
   const navigate = useNavigate();
+
+  const [registeredEvents, setRegisteredEvents] = useState([]);
+  const [openVideo, setOpenVideo] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const handleRegister = (event) => {
+    const alreadyRegistered = registeredEvents.some((e) => e.id === event.id);
+
+    if (!alreadyRegistered) {
+      setRegisteredEvents([...registeredEvents, event]);
+      alert("Successfully Registered!");
+    }
+  };
+
+  const handleWatch = (url) => {
+    setVideoUrl(url);
+    setOpenVideo(true);
+  };
 
   return (
     <div className="min-h-screen bg-[#F4F7FB] font-[Poppins]">
@@ -67,18 +93,18 @@ const Events = () => {
             </TabsTrigger>
           </TabsList>
 
-          {/* Upcoming Events */}
+          {/* Upcoming */}
           <TabsContent value="upcoming" className="space-y-4">
             {upcomingEvents.map((event) => (
               <Card
                 key={event.id}
                 className="overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-lg border border-gray-100 transition"
               >
-                {/* Top Gradient Section */}
+                {/* Top Section */}
                 <div className="bg-gradient-to-r from-[#0E4C92] to-[#1C6DD0] p-4 text-white">
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg leading-tight mb-1">
+                      <h3 className="font-semibold text-lg mb-1">
                         {event.title}
                       </h3>
 
@@ -91,12 +117,16 @@ const Events = () => {
                     </div>
 
                     <Badge className="bg-white/25 text-white border-none px-3 py-1 rounded-full">
-                      {event.status === "open" ? "Open" : "Early Bird"}
+                      {event.status === "open"
+                        ? "Open"
+                        : event.status === "closed"
+                        ? "Closed"
+                        : "Early Bird"}
                     </Badge>
                   </div>
                 </div>
 
-                {/* Event Body */}
+                {/* Body */}
                 <div className="p-4 space-y-4">
 
                   {/* Speaker */}
@@ -130,10 +160,26 @@ const Events = () => {
                     <span>Seats: {event.seats}</span>
                   </div>
 
-                  {/* Register Button */}
-                  <Button className="w-full bg-[#0E4C92] hover:bg-[#0C3F78] text-white rounded-xl">
-                    Register Now
-                  </Button>
+                  {/* Register / Watch Now */}
+                  {event.status === "closed" ? (
+                    <Button disabled className="w-full bg-gray-400 rounded-xl">
+                      Registration Closed
+                    </Button>
+                  ) : registeredEvents.some((e) => e.id === event.id) ? (
+                    <Button
+                      className="w-full bg-green-600 hover:bg-green-700 text-white rounded-xl"
+                      onClick={() => handleWatch(event.videoUrl)}
+                    >
+                      Watch Now
+                    </Button>
+                  ) : (
+                    <Button
+                      className="w-full bg-[#0E4C92] hover:bg-[#0C3F78] text-white rounded-xl"
+                      onClick={() => handleRegister(event)}
+                    >
+                      Register Now
+                    </Button>
+                  )}
                 </div>
               </Card>
             ))}
@@ -148,19 +194,81 @@ const Events = () => {
 
           {/* Registered Events */}
           <TabsContent value="registered">
-            <div className="text-center py-12 text-gray-600">
-              You haven't registered for any events yet
-              <Button
-                className="mt-4 bg-[#0E4C92] hover:bg-[#0C3F78] text-white rounded-xl"
-                onClick={() => navigate("/events")}
-              >
-                Browse Events
-              </Button>
-            </div>
-          </TabsContent>
+            {registeredEvents.length === 0 ? (
+              <div className="text-center py-12 text-gray-600">
+                You haven't registered for any events yet
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {registeredEvents.map((event) => (
+                  <Card
+                    key={event.id}
+                    className="p-4 rounded-2xl bg-white shadow-md border"
+                  >
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <h3 className="font-semibold">{event.title}</h3>
+                        <p className="text-sm text-gray-600">{event.date}</p>
+                      </div>
 
+                      <Button
+                        className="bg-green-600 text-white hover:bg-green-700 rounded-xl"
+                        onClick={() => handleWatch(event.videoUrl)}
+                      >
+                        Watch Now
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
         </Tabs>
       </main>
+
+      {/* Video Modal */}
+      {/* VIDEO MODAL */}
+{openVideo && (
+  <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-md">
+
+    {/* Close Button */}
+    <button
+      className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 p-3 rounded-full transition"
+      onClick={() => setOpenVideo(false)}
+    >
+      <X className="h-6 w-6 text-white" />
+    </button>
+
+    {/* Modal Content */}
+    <div className="w-full max-w-4xl px-4 flex flex-col items-center">
+
+      {/* Video Player */}
+      <div className="w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
+        <iframe
+          src={`${videoUrl}?autoplay=1&modestbranding=1&rel=0&showinfo=0&controls=1`}
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowFullScreen
+        ></iframe>
+      </div>
+
+      {/* Open on YouTube Button */}
+      <a
+        href={videoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-5"
+      >
+        <Button className="bg-[#FF0000] hover:bg-[#cc0000] text-white px-6 py-3 rounded-xl flex items-center gap-2">
+          Open on YouTube
+          <Video className="h-5 w-5" />
+        </Button>
+      </a>
+    </div>
+
+  </div>
+)}
+
     </div>
   );
 };

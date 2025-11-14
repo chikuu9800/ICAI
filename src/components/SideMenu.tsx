@@ -18,8 +18,8 @@ const SideMenu = ({ onClose }: SideMenuProps) => {
 
   const menuItems = [
     { icon: Home, label: "Dashboard", route: "/dashboard" },
-    { icon: Users, label: "DTC Directory", route: "/dtc-directory" },
-    { icon: Users, label: "CITAX Directory", route: "/citax-directory" },
+    // { icon: Users, label: "DTC Directory", route: "/dtc-directory" },
+    // { icon: Users, label: "CITAX Directory", route: "/citax-directory" },
     { icon: BookOpen, label: "Publications", route: "/publications" },
     { icon: Megaphone, label: "Announcements", route: "/announcements" },
     { icon: Calendar, label: "Events & Webinars", route: "/events" },
