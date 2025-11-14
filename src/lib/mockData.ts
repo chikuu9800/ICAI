@@ -352,51 +352,148 @@ export const upcomingEvents = [
 
 
 export const forumQuestions = [
+  // ---------------- TDS / TCS ----------------
   {
     id: "1",
     title: "Query on Section 206AB applicability",
     author: "CA Ramesh Iyer",
     authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=RI&backgroundColor=f59e0b",
-    category: "TDS/TCS",
+    category: "TDS / TCS",
+    allocatedPanelist: "Panelist - TDS",
     time: "2 hours ago",
     replies: 3,
     views: 45,
     expertAnswered: true,
   },
+
+  // ---------------- Transfer Pricing ----------------
   {
     id: "2",
     title: "Transfer Pricing Documentation Requirements",
     author: "CA Sunita Mehta",
     authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=SM&backgroundColor=f59e0b",
-    category: "International Tax",
+    category: "Transfer Pricing",
+    allocatedPanelist: "Panelist - Transfer Pricing",
     time: "5 hours ago",
     replies: 1,
     views: 28,
     expertAnswered: false,
   },
+
+  // ---------------- Corporate Tax ----------------
   {
     id: "3",
     title: "Tax treatment of ESOPs under new regime",
     author: "CA Vikram Malhotra",
     authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=VM&backgroundColor=f59e0b",
-    category: "Income Tax",
+    category: "Corporate Tax",
+    allocatedPanelist: "Panelist - Corporate Taxation",
     time: "1 day ago",
     replies: 7,
     views: 156,
     expertAnswered: true,
   },
+
+  // ---------------- GST ----------------
   {
     id: "4",
     title: "GST on Reverse Charge Mechanism clarification",
     author: "CA Anjali Desai",
     authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=AD&backgroundColor=f59e0b",
     category: "GST",
+    allocatedPanelist: "Panelist - GST",
     time: "1 day ago",
     replies: 4,
     views: 89,
     expertAnswered: false,
   },
+
+  // ---------------- Return Forms ----------------
+  {
+    id: "5",
+    title: "Which ITR form applies for partner receiving remuneration?",
+    author: "CA Harish Patil",
+    authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=HP&backgroundColor=3b82f6",
+    category: "Return Forms",
+    allocatedPanelist: "Panelist - Return Filing",
+    time: "3 days ago",
+    replies: 6,
+    views: 102,
+    expertAnswered: true,
+  },
+
+  // ---------------- Capital Gains ----------------
+  {
+    id: "6",
+    title: "Capital Gain tax on sale of inherited property",
+    author: "CA Ritu Sharma",
+    authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=RS&backgroundColor=8b5cf6",
+    category: "Capital Gains",
+    allocatedPanelist: "Panelist - Capital Gains",
+    time: "4 days ago",
+    replies: 2,
+    views: 76,
+    expertAnswered: false,
+  },
+
+  // ---------------- Assessment Procedure ----------------
+  {
+    id: "7",
+    title: "Scrutiny notice under Section 143(2) – what documents needed?",
+    author: "CA Deepak Verma",
+    authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=DV&backgroundColor=f87171",
+    category: "Assessment Procedure",
+    allocatedPanelist: "Panelist - Assessment",
+    time: "6 days ago",
+    replies: 5,
+    views: 130,
+    expertAnswered: false,
+  },
+
+  // ---------------- International Taxation ----------------
+  {
+    id: "8",
+    title: "Taxation of NRI income earned from Indian consultancy",
+    author: "CA Aditi Purohit",
+    authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=AP&backgroundColor=10b981",
+    category: "International Taxation",
+    allocatedPanelist: "Panelist - International Tax",
+    time: "1 week ago",
+    replies: 1,
+    views: 52,
+    expertAnswered: false,
+  },
+
+  // ---------------- Miscellaneous ----------------
+  {
+    id: "9",
+    title: "Is Interest u/s 234F mandatory for delayed filing?",
+    author: "CA Mohan Kulkarni",
+    authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=MK&backgroundColor=6366f1",
+    category: "Miscellaneous",
+    allocatedPanelist: "Panelist - General Advisory",
+    time: "1 week ago",
+    replies: 0,
+    views: 33,
+    expertAnswered: false,
+  },
+
+  // ---------------- Corporate Tax (extra example) ----------------
+  {
+    id: "10",
+    title: "Depreciation rate confusion for intangible assets",
+    author: "CA Ketan Shah",
+    authorImage: "https://api.dicebear.com/7.x/initials/svg?seed=KS&backgroundColor=14b8a6",
+    category: "Corporate Tax",
+    allocatedPanelist: "Panelist - Corporate Taxation",
+    time: "2 weeks ago",
+    replies: 3,
+    views: 80,
+    expertAnswered: true,
+  },
 ];
+
+
 
 export const notifications = [
   {

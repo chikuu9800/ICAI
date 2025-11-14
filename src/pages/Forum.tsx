@@ -32,11 +32,15 @@ const Forum = () => {
   });
 
   const categories = [
-    "Income Tax",
+    "Return Forms",
+    "Capital Gains",
+    "Assessment Procedure",
+    "International Taxation",
+    "Transfer Pricing",
+    "TDS / TCS",
     "GST",
-    "International Tax",
     "Corporate Tax",
-    "TDS/TCS",
+    "Miscellaneous",
   ];
 
   const filteredQuestions = forumQuestions.filter((q) => {
